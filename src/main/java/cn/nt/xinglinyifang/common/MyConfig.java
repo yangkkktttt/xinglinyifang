@@ -17,12 +17,13 @@ public class MyConfig extends JFinalConfig {
 
     @Override
     public void configRoute(Routes me) {
-        me.add("/",UserController.class,"/user");
+        me.add("/user",UserController.class);
         me.add("/activity",ActivityController.class);
         me.add("/home",HomeController.class);
         me.add("/physician",PhysicianController.class);
         me.add("/search",SearchController.class);
         me.add("/tech",TechController.class);
+
     }
 
     @Override
