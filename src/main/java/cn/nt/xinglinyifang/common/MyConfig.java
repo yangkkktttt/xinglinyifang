@@ -1,10 +1,11 @@
 package cn.nt.xinglinyifang.common;
 
-import cn.nt.xinglinyifang.controller.UserController;
-import cn.nt.xinglinyifang.controller.ActivityController;
+import cn.nt.xinglinyifang.controller.*;
 import com.jfinal.config.*;
 import com.jfinal.kit.PropKit;
 import com.jfinal.template.Engine;
+
+
 
 public class MyConfig extends JFinalConfig {
     @Override
@@ -18,7 +19,10 @@ public class MyConfig extends JFinalConfig {
     public void configRoute(Routes me) {
         me.add("/",UserController.class,"/user");
         me.add("/activity",ActivityController.class);
-
+        me.add("/home",HomeController.class);
+        me.add("/physician",PhysicianController.class);
+        me.add("/search",SearchController.class);
+        me.add("/tech",TechController.class);
     }
 
     @Override
