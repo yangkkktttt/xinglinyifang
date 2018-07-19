@@ -6,11 +6,11 @@ import com.jfinal.core.Controller;
  */
 public class PhysicianController extends Controller {
     //名医介绍
-    public void list(){
+    public void Physicianlist(){
         renderJson();
     }
     //医生详情
-    public void details(){
+    public void Physiciandetails(){
         renderJson();
     }
 }

@@ -6,15 +6,15 @@ import com.jfinal.core.Controller;
  */
 public class UserController extends Controller {
     //注册
-    public void register(){
+    public void UserRegister(){
         renderJson();
     }
     //登录
-    public void login(){
+    public void UserLogin(){
         renderJson();
     }
     //修改个人信息
-    public void update(){
+    public void UserUpdate(){
         renderJson();
     }
 }

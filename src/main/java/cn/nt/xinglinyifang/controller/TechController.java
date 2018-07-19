@@ -6,11 +6,11 @@ import com.jfinal.core.Controller;
  */
 public class TechController extends Controller {
     //民族技法
-    public void list(){
+    public void Techlist(){
         renderJson();
     }
     //民族技法详情
-    public void details(){
+    public void Techdetails(){
         renderJson();
     }
 

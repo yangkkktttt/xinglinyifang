@@ -6,11 +6,11 @@ import com.jfinal.core.Controller;
  */
 public class IllnessController extends Controller {
     //疑难杂症
-    public void list(){
+    public void Illnesslist(){
         renderJson();
     }
     //症状详情
-    public void details(){
+    public void Illnessdetails(){
         renderJson();
     }
 }

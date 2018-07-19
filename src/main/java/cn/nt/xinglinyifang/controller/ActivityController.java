@@ -6,11 +6,11 @@ import com.jfinal.core.Controller;
  */
 public class ActivityController extends Controller {
     //活动咨询
-    public void list(){
+    public void Activitylist(){
         renderJson();
     }
     //活动详情
-    public void details(){
+    public void Activitydetails(){
         renderJson();
     }
 }

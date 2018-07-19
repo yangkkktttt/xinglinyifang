@@ -6,7 +6,7 @@ import com.jfinal.core.Controller;
  */
 public class SearchController extends Controller {
     //搜索
-    public void index(){
+    public void Searchindex(){
         renderJson();
     }
 }

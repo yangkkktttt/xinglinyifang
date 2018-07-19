@@ -6,7 +6,7 @@ import com.jfinal.core.Controller;
  */
 public class HomeController extends Controller {
     //首页
-    public void index(){
+    public void Homeindex(){
         renderJson();
     }
 }
