@@ -1,5 +1,7 @@
 package cn.nt.xinglinyifang.controller;
 
-public class UserController {
+import com.jfinal.core.Controller;
+
+public class UserController extends Controller {
 
 }

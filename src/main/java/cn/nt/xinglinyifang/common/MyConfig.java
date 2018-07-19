@@ -1,5 +1,6 @@
 package cn.nt.xinglinyifang.common;
 
+import cn.nt.xinglinyifang.controller.UserController;
 import com.jfinal.config.*;
 import com.jfinal.kit.PropKit;
 import com.jfinal.template.Engine;
@@ -14,6 +15,7 @@ public class MyConfig extends JFinalConfig {
 
     @Override
     public void configRoute(Routes me) {
+        me.add("/",UserController.class,"/user");
 
     }
 
