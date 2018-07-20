@@ -1,5 +1,6 @@
 package cn.nt.xinglinyifang.service;
 
+import cn.nt.xinglinyifang.model.Technology;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
 import org.slf4j.Logger;
@@ -7,6 +8,9 @@ import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
+/**
+ * @author 74123
+ */
 public class MedicalTechService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MedicalTechService.class);
@@ -31,9 +35,7 @@ public class MedicalTechService {
      */
     public List<Record> getTechs() {
         String sql = Db.getSql("technology.techList");
-        System.out.println(sql);
         List<Record> list = Db.find(sql);
-        System.out.println(list);
         for (Record r : list) {
             int id = r.getInt("id");
             String pic = CommonService.getImgUrl(TECH_TYPE, id);

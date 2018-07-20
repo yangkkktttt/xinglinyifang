@@ -72,6 +72,15 @@ public class DoctorService {
     }
 
     /**
+     * 根据医生id获取医生头像的url
+     * @param id 医生id
+     * @return 医生头像的url
+     */
+    public String getFaceById(int id) {
+        return CommonService.getImgUrl(DOC_TYPE, id);
+    }
+
+    /**
      * 从数据表中随机取出6条医师记录,内容包括id，name，简介glory，图片pic
      * @return 医师记录的List
      */
