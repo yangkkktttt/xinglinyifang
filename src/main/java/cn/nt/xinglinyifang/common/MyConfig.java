@@ -7,6 +7,7 @@ import com.jfinal.kit.PathKit;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
+import com.jfinal.plugin.druid.DruidStatViewHandler;
 import com.jfinal.template.Engine;
 
 
@@ -66,6 +67,6 @@ public class MyConfig extends JFinalConfig {
 
     @Override
     public void configHandler(Handlers me) {
-
+        me.add(new DruidStatViewHandler("/druid"));
     }
 }

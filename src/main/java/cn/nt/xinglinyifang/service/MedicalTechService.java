@@ -1,8 +1,10 @@
 package cn.nt.xinglinyifang.service;
 
 import cn.nt.xinglinyifang.model.Technology;
+import com.jfinal.kit.Kv;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
+import com.jfinal.plugin.activerecord.SqlPara;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -42,5 +44,29 @@ public class MedicalTechService {
             r.set("pic", pic);
         }
         return list;
+    }
+
+    /**
+     * 根据id获取Technology的信息，包括，技法id，name，简介intro（characteristic + detail），主治疾病illness（main_disease）
+     * @param id 技法id
+     * @return Technology信息
+     */
+    public Technology getById(int id) {
+//        final Kv cond = Kv.by("id", id);
+//        SqlPara sqlPara = Db.getSqlPara("technology.techDetails", Kv.by("cond", cond));
+//        System.out.println(sqlPara);
+//        return Technology.dao.findFirst(sqlPara);
+//        String sql = Db.getSql("technology.details");
+//        System.out.println(sql);
+        return Technology.dao.findFirst("select id, name, characteristic, detail, main_disease from technology where id = " + id);
+    }
+
+    /**
+     * 根据技法id获取技法的图片地址
+     * @param id 技法id
+     * @return 技法的图片url List
+     */
+    public List<Record> getImgById(int id) {
+        return CommonService.getImgUrlList(TECH_TYPE, id);
     }
 }
