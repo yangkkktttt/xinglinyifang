@@ -1,5 +1,6 @@
 package cn.nt.xinglinyifang.service;
 
+import cn.nt.xinglinyifang.model.MedicalCase;
 import cn.nt.xinglinyifang.model.Technology;
 import com.jfinal.kit.Kv;
 import com.jfinal.plugin.activerecord.Db;
@@ -52,13 +53,8 @@ public class MedicalTechService {
      * @return Technology信息
      */
     public Technology getById(int id) {
-//        final Kv cond = Kv.by("id", id);
-//        SqlPara sqlPara = Db.getSqlPara("technology.techDetails", Kv.by("cond", cond));
-//        System.out.println(sqlPara);
-//        return Technology.dao.findFirst(sqlPara);
-//        String sql = Db.getSql("technology.details");
-//        System.out.println(sql);
-        return Technology.dao.findFirst("select id, name, characteristic, detail, main_disease from technology where id = " + id);
+        String sql = Db.getSql("technology.details");
+        return Technology.dao.findFirst(sql, id);
     }
 
     /**
@@ -68,5 +64,28 @@ public class MedicalTechService {
      */
     public List<Record> getImgById(int id) {
         return CommonService.getImgUrlList(TECH_TYPE, id);
+    }
+
+    /**
+     * 根据关键字类型（0：技术，1：疾病，2：医生 ） 和对应id返回一条案例
+     * @param type 0：技术，1：疾病，2：医生
+     * @param key id
+     * @return 返回一个MedicalCase对象
+     */
+    public MedicalCase getMedicalCase(int type, int key) {
+        String kind;
+        if (type == 0) {
+            kind = "technology_id";
+        } else if (type == 1) {
+            kind = "disease_id";
+        } else {
+            kind = "doctor_id";
+        }
+
+        Kv cond = Kv.by(kind+"=", key);
+
+        SqlPara sqlPara = Db.getSqlPara("medicalCase.find", Kv.by("cond", cond));
+
+        return MedicalCase.dao.findFirst(sqlPara);
     }
 }
