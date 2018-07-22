@@ -18,18 +18,10 @@
   #include("medicine.sql")
 #end
 
-#namespace("picture")
-  #include("picture.sql")
-#end
-
 #namespace("relationship")
   #include("relationship.sql")
 #end
 
 #namespace("technology")
   #include("technology.sql")
-#end
-
-#namespace("video")
-  #include("video.sql")
 #end

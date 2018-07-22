@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * @author 741238
+ * @author 74123
  */
 public class ActivityService {
     private static final Logger LOGGER = LoggerFactory.getLogger(MedicalTechService.class);
