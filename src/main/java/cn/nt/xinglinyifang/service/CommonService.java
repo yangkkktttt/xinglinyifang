@@ -14,6 +14,7 @@ import java.util.List;
 public class CommonService {
     /**
      * 根据type和outer_id获取一张图片的url
+     * @param type 1：医生；2：医技；3：药物；4：活动
      * @param id id
      * @return 图片url
      */
@@ -25,7 +26,7 @@ public class CommonService {
 
     /**
      * 根据type和outer_id获取图片的url列表
-     * @param type 类型
+     * @param type 1：医生；2：医技；3：药物；4：活动
      * @param id id
      * @return 图片url列表
      */
@@ -35,8 +36,15 @@ public class CommonService {
         return Db.find(sqlPara);
     }
 
-    public static void getA() {
-        String sql = Db.getSql("medicine.sss");
-        System.out.println(sql);
+    /**
+     * 根据type和outer_id获取一个视频
+     * @param type 1：医生；2：医技；3：药物；4：活动
+     * @param id id
+     * @return 视频的url
+     */
+    public static String getVidUrl(int type, int id) {
+        Kv cond = Kv.by("type=", type).set("outer_id=", id);
+        SqlPara sqlPara = Db.getSqlPara("relationship.findVid", Kv.by("cond", cond));
+        return String.valueOf(Db.findFirst(sqlPara));
     }
 }
