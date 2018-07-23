@@ -78,8 +78,8 @@ public class DiseaseService {
         docAndTech.put("tech", tech);
 
         //根据技法名称获取医生
-        Kv cond2 = Kv.by("field", tech.get("name"));
-        SqlPara sqlPara2 = Db.getSqlPara("doctor.findByTech", cond2);
+        Kv cond2 = Kv.by("id=", tech.get("outer_id"));
+        SqlPara sqlPara2 = Db.getSqlPara("doctor.findByTech", Kv.by("cond", cond2));
         docAndTech.put("doc", Doctor.dao.findFirst(sqlPara2));
 
         return docAndTech;

@@ -1,5 +1,6 @@
 package cn.nt.xinglinyifang.service;
 
+import cn.nt.xinglinyifang.model.Doctor;
 import cn.nt.xinglinyifang.model.MedicalCase;
 import cn.nt.xinglinyifang.model.Technology;
 import com.jfinal.kit.Kv;
@@ -9,7 +10,9 @@ import com.jfinal.plugin.activerecord.SqlPara;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 74123
@@ -88,4 +91,21 @@ public class MedicalTechService {
 
         return MedicalCase.dao.findFirst(sqlPara);
     }
+
+    /**
+     * 根据搜索关键词查找相应的 技法
+     * 通过技法获取相应的 outer_id找到对应医生（医生相关操作在DoctorService）
+     * @param key 搜索关键词
+     * @return 搜索结果List
+     */
+    public List<Technology> search(String key) {
+
+        //模糊查询技法表中的，name，method，main_effect，main_disease，detail栏，返回查找到的技法列表
+        Kv cond = Kv.by("name", key).set("method", key).set("main_effect", key).set("main_disease", key)
+                .set("detail", key);
+        SqlPara sqlPara = Db.getSqlPara("technology.search", Kv.by("cond", cond));
+
+        return Technology.dao.find(sqlPara);
+    }
+
 }

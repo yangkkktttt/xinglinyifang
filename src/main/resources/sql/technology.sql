@@ -7,6 +7,13 @@
 #end
 
 #sql("findByDisease")
-    select id, name from technology where main_disease like concat('%', #para(disease), '%')
+    select id, name, outer_id from technology where main_disease like concat('%', #para(disease), '%')
+#end
+
+#sql("search")
+    select id, name, outer_id from technology
+        #for(x:cond)
+            #(for.index == 0 ? "where" : "or") #(x.key) like concat('%', #para(x.value), '%')
+        #end
 #end
 

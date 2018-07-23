@@ -2,8 +2,10 @@ package cn.nt.xinglinyifang.service;
 
 
 import cn.nt.xinglinyifang.model.Doctor;
+import com.jfinal.kit.Kv;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.Record;
+import com.jfinal.plugin.activerecord.SqlPara;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -96,4 +98,28 @@ public class DoctorService {
     }
 
 
+    /**
+     * 根据技法表中的医生关联id，获取医生相关信息
+     * 包括：id，name，address
+     * @param id outer_id
+     * @return Doctor对象
+     */
+    public Doctor getDoctorByOuterId(int id) {
+        Kv cond = Kv.by("id=", id);
+        SqlPara sqlPara = Db.getSqlPara("doctor.search", Kv.by("cond", cond));
+
+        return Doctor.dao.findFirst(sqlPara);
+    }
+
+    /**
+     * 根据医生姓名查找医生
+     * @param name 医生姓名
+     * @return 医生List
+     */
+    public List<Doctor> getByName(String name) {
+        Kv cond = Kv.by("name", name);
+        SqlPara sqlPara = Db.getSqlPara("doctor.findByName", Kv.by("cond", cond));
+
+        return Doctor.dao.find(sqlPara);
+    }
 }
